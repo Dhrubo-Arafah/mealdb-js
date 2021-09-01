@@ -5,7 +5,7 @@ const button = document.querySelector('button')
 document.addEventListener("DOMContentLoaded", defaultMeal())
 
 function defaultMeal(){
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i= `)
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?s= `)
             .then(res => res.json())
             .then(data => {
                 meals = data.meals
