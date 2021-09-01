@@ -5,7 +5,7 @@ const button = document.querySelector('button')
 document.addEventListener("DOMContentLoaded", defaultMeal())
 
 function defaultMeal(){
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?s= `)
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i= `)
             .then(res => res.json())
             .then(data => {
                 meals = data.meals
@@ -24,10 +24,11 @@ button.addEventListener('click', e => {
     if (item == '') {
         alert('Field is empty')
     } else {
-        fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?s=${item}`)
+        fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${item}`)
             .then(res => res.json())
             .then(data => {
                 meals = data.meals
+                console.log(data)
                 if (meals === null) {
                     alert('Search Not Found')
                 }
