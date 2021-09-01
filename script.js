@@ -2,6 +2,21 @@ const allMeals = document.getElementById('meals')
 const input = document.querySelector('input')
 const button = document.querySelector('button')
 
+document.addEventListener("DOMContentLoaded", defaultMeal())
+
+function defaultMeal(){
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i= `)
+            .then(res => res.json())
+            .then(data => {
+                meals = data.meals
+                console.log(meals)
+                allMeals.textContent = ''
+                    for (const meal of meals) {
+                        let item = Object.values(meal)
+                        newMeal(item[0], item[1])
+                    }
+            })
+        }
 
 button.addEventListener('click', e => {
     e.preventDefault();
@@ -38,7 +53,7 @@ function alert() {
         <div class="mx-auto w-100">
             Invalid Input
         </div>
-        <button type="button" class="btn rounded-circle mx-auto" data-bs-dismiss="alert"><i class="fas fa-times text-danger"></i></button>
+        <button type="button" onclick="defaultMeal()" class="btn rounded-circle mx-auto" data-bs-dismiss="alert"><i class="fas fa-times text-danger"></i></button>
     </div>`
 }
 
